@@ -1,11 +1,12 @@
 import React from 'react'
-import { Metadata } from 'next'
+import CreateAccountForm from './CreateAccountForm'
+import Link from 'next/link'
+import Image from 'next/image'
 
-import { Gutter } from '../../_components/Gutter'
-import { RenderParams } from '../../_components/RenderParams'
+import { Metadata } from 'next'
 import { getMeUser } from '../../_utilities/getMeUser'
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
-import CreateAccountForm from './CreateAccountForm'
+import { RenderParams } from '../../_components/RenderParams'
 
 import classes from './index.module.scss'
 
@@ -17,11 +18,22 @@ export default async function CreateAccount() {
   })
 
   return (
-    <Gutter className={classes.createAccount}>
-      <h1>Create Account</h1>
-      <RenderParams />
-      <CreateAccountForm />
-    </Gutter>
+    <section className={classes.signup}>
+      <div className={classes.heroImg}>
+        <Link href="/" className={classes.link}>
+          <Image src="/logo-white.png" alt="logo" width={250} height={25} />
+        </Link>
+      </div>
+
+      <div className={classes.formContainer}>
+        <RenderParams className={classes.params} />
+        <div className={classes.formTitle}>
+          <h5>Create your Esplend'or Account</h5>
+        </div>
+        <p>Please fill out the form below to create your account.</p>
+        <CreateAccountForm />
+      </div>
+    </section>
   )
 }
 

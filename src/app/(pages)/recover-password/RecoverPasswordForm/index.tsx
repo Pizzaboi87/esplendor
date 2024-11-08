@@ -2,13 +2,13 @@
 
 import React, { Fragment, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import Link from 'next/link'
 
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'
 
 import classes from './index.module.scss'
+import Link from 'next/link'
 
 type FormData = {
   email: string
@@ -50,14 +50,7 @@ export const RecoverPasswordForm: React.FC = () => {
     <Fragment>
       {!success && (
         <React.Fragment>
-          <h1>Recover Password</h1>
           <div className={classes.formWrapper}>
-            <p>
-              {`Please enter your email below. You will receive an email message with instructions on
-              how to reset your password. To manage your all users, `}
-              <Link href="/admin/collections/users">login to the admin dashboard</Link>
-              {'.'}
-            </p>
             <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
               <Message error={error} className={classes.message} />
               <Input
@@ -74,6 +67,11 @@ export const RecoverPasswordForm: React.FC = () => {
                 label="Recover Password"
                 className={classes.submit}
               />
+              <div className={classes.links}>
+                <Link href="/login" className={classes.link}>
+                  <span>&#8678;</span> Back
+                </Link>
+              </div>
             </form>
           </div>
         </React.Fragment>

@@ -37,36 +37,36 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
       </Gutter>
 
       <div className={classes.footer}>
-        <Gutter>
+        <div className={classes.logotext}>
           <Link href="/">
             <Image src="/logo-white.png" alt="logo" width={240} height={50} />
           </Link>
           <p>{footer.copyright}</p>
+        </div>
 
-          <div className={classes.socialLinks}>
-            {navItems.map(item => {
-              const icon = item?.link?.icon as Media
+        <div className={classes.socialLinks}>
+          {navItems.map(item => {
+            const icon = item?.link?.icon as Media
 
-              return (
-                <Button
-                  key={item.link.label}
-                  el="link"
-                  href={item.link.url}
-                  newTab={true}
-                  className={classes.socialLinkItem}
-                >
-                  <Image
-                    src={icon?.url}
-                    alt={item.link.label}
-                    width={50}
-                    height={50}
-                    className={classes.socialIcon}
-                  />
-                </Button>
-              )
-            })}
-          </div>
-        </Gutter>
+            return (
+              <Button
+                key={item.link.label}
+                el="link"
+                href={item.link.url}
+                newTab={true}
+                className={classes.socialLinkItem}
+              >
+                <Image
+                  src={icon?.url}
+                  alt={item.link.label}
+                  width={50}
+                  height={50}
+                  className={classes.socialIcon}
+                />
+              </Button>
+            )
+          })}
+        </div>
       </div>
     </footer>
   )
