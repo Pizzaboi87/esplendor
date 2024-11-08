@@ -1,0 +1,38 @@
+@use '../../../_css/queries.scss' as *;
+
+.card {
+  position: relative;
+  min-height: 360px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px 0;
+  text-decoration: none;
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover .background {
+    transform: scale(1.2);
+  }
+}
+
+.title {
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+}

@@ -1,15 +1,19 @@
 import React from 'react'
+import Categories from '../../_components/Categories'
+
 import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-
-import { Page } from '../../../payload/payload-types'
+import { Category, Page as PageType } from '../../../payload/payload-types'
 import { staticHome } from '../../../payload/seed/home-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { Hero } from '../../_components/Hero'
 import { generateMeta } from '../../_utilities/generateMeta'
+import { Gutter } from '../../_components/Gutter'
+
+import classes from './index.module.scss'
 
 // Payload Cloud caches all files through Cloudflare, so we don't need Next.js to cache them as well
 // This means that we can turn off Next.js data caching and instead rely solely on the Cloudflare CDN
@@ -22,14 +26,17 @@ export const dynamic = 'force-dynamic'
 export default async function Page({ params: { slug = 'home' } }) {
   const { isEnabled: isDraftMode } = draftMode()
 
-  let page: Page | null = null
+  let page: PageType | null = null
+  let categories: Category[] | null = null
 
   try {
-    page = await fetchDoc<Page>({
+    page = await fetchDoc<PageType>({
       collection: 'pages',
       slug,
       draft: isDraftMode,
     })
+
+    categories = await fetchDocs<Category>('categories')
   } catch (error) {
     // when deploying this template on Payload Cloud, this page needs to build before the APIs are live
     // so swallow the error here and simply render the page with fallback data where necessary
@@ -52,18 +59,32 @@ export default async function Page({ params: { slug = 'home' } }) {
 
   return (
     <React.Fragment>
-      <Hero {...hero} />
-      <Blocks
-        blocks={layout}
-        disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
-      />
+      {slug === 'home' ? (
+        <React.Fragment>
+          <div className={classes.gutter}>
+            <Hero {...hero} />
+          </div>
+
+          <Gutter className={classes.home}>
+            <Categories {...{ categories }} />
+          </Gutter>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Hero {...hero} />
+          <Blocks
+            blocks={layout}
+            disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
+          />
+        </React.Fragment>
+      )}
     </React.Fragment>
   )
 }
 
 export async function generateStaticParams() {
   try {
-    const pages = await fetchDocs<Page>('pages')
+    const pages = await fetchDocs<PageType>('pages')
     return pages?.map(({ slug }) => slug)
   } catch (error) {
     return []
@@ -73,10 +94,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params: { slug = 'home' } }): Promise<Metadata> {
   const { isEnabled: isDraftMode } = draftMode()
 
-  let page: Page | null = null
+  let page: PageType | null = null
 
   try {
-    page = await fetchDoc<Page>({
+    page = await fetchDoc<PageType>({
       collection: 'pages',
       slug,
       draft: isDraftMode,

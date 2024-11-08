@@ -1,7 +1,6 @@
-// importálások és betűtípusok beállítása
 import React from 'react'
 import { Metadata } from 'next'
-import { Aboreto, Work_Sans } from 'next/font/google'
+import { Aboreto, Work_Sans, Bonheur_Royale } from 'next/font/google'
 
 import { AdminBar } from './_components/AdminBar'
 import { Footer } from './_components/Footer'
@@ -24,6 +23,12 @@ const work = Work_Sans({
   variable: '--font-work',
 })
 
+const bonheur_royale = Bonheur_Royale({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-bonheur-royale',
+})
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -32,7 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className={`${aboreto.variable} ${work.variable}`}>
+      <body className={`${aboreto.variable} ${work.variable} ${bonheur_royale.variable}`}>
         <Providers>
           <AdminBar />
           {/* @ts-expect-error */}

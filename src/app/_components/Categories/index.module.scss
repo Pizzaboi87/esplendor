@@ -1,0 +1,47 @@
+@use '../../_css/queries.scss' as *;
+
+.container {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  gap: 50px;
+
+  @include small-break {
+    gap: 30px;
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 30px;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include large-break {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+  }
+}
