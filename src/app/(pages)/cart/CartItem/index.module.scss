@@ -1,0 +1,105 @@
+@import '../../../_css/common';
+
+.item {
+  display: grid;
+  grid-template-columns: 100px 2fr 1fr;
+  padding: 24px 0;
+  gap: 24px;
+  border-bottom: 1px solid var(--color-dark-50);
+  
+  @include small-break {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.mediaWrapper {
+  position: relative;
+  min-height: 100px;
+  max-height: 200px;
+  border-radius: 10px 0;
+  padding: 1px;
+  background-color: var(--color-terciary);
+  aspect-ratio: 1 / 1;
+}
+
+.media {
+  position: relative;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px 0;
+}
+
+.itemDetails {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: center;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.titleWrapper {
+  white-space: wrap;
+  overflow: hidden;
+  
+  h6 {
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+}
+
+.quantity {
+  border: 1px solid var(--color-terciary);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  border-radius: 10px;
+  align-items: center;
+  height: 45px;
+  width: 100%;
+  max-width: 120px;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.quantityBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  width: 40px;
+}
+
+.quantityInput {
+  text-align: center;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: transparent;
+  width: 100%;
+  margin-left: 7px;
+}
+
+.subtotalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 60px;
+
+  @include small-break {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 10px;
+  }
+}
