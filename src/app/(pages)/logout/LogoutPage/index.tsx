@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { Settings } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
 
+import classes from './index.module.scss'
+import Image from 'next/image'
+
 export const LogoutPage: React.FC<{
   settings: Settings
 }> = props => {
@@ -29,25 +32,33 @@ export const LogoutPage: React.FC<{
   }, [logout])
 
   return (
-    <Fragment>
+    <div className={classes.container}>
       {(error || success) && (
-        <div>
-          <h1>{error || success}</h1>
+        <div className={classes.content}>
+          <h3>{error || success}</h3>
           <p>
             {'What would you like to do next?'}
             {typeof productsPage === 'object' && productsPage?.slug && (
               <Fragment>
                 {' '}
-                <Link href={`/${productsPage.slug}`}>Click here</Link>
-                {` to shop.`}
+                <Link href="/products" className={classes.link}>
+                  Click here
+                </Link>
+                {` to return to the shop.`}
               </Fragment>
             )}
-            {` To log back in, `}
-            <Link href="/login">click here</Link>
-            {'.'}
           </p>
         </div>
       )}
-    </Fragment>
+      <div className={classes.imageWrapper}>
+        <Image
+          src="/assets/images/logout.webp"
+          alt="Ring box"
+          width={300}
+          height={300}
+          className={classes.image}
+        />
+      </div>
+    </div>
   )
 }

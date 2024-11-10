@@ -1,78 +1,80 @@
-@import "../../../_css/common";
+@import '../../../_css/common';
 
 .items {
-  margin-bottom: var(--base);
+  margin: 30px 0;
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  gap: var(--base);
+.header {
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr;
+  gap: 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-dark-50);
 
   @include small-break {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
+    display: none;
   }
 }
 
-.rowContent {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--base) / 2);
-}
+.quantity {
+  padding-left: 100px;
 
-.warning {
-  margin: 0;
-  color: var(--theme-warning-500);
-}
+  @include large-break {
+    padding-left: 40px;
+  }
 
-:global([data-theme="light"]) {
-  .warning {
-    color: var(--theme-error-500);
+  @include mid-break {
+    padding-left: 20px;
   }
 }
 
-.placeholder {
-  background-color: var(--theme-elevation-50);
-  width: 100%;
-  height: 100%;
+.headerItemDetails {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.headersubtotal {
+  text-align: end;
+}
+
+.subtotal {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-}
-
-.mediaWrapper {
-  text-decoration: none;
-  display: block;
-  position: relative;
-  aspect-ratio: 5 / 4;
-  width: 100%;
-  max-width: 300px;
-
-  @include small-break {
-    max-width: unset;
-    margin-bottom: calc(var(--base) / 2);
-  }
-}
-
-.media {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.image {
-  object-fit: cover;
-}
-
-.title {
-  margin: 0;
 }
 
 .orderTotal {
   margin-top: var(--base);
   font-weight: 600;
+  text-align: end;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  margin-bottom: 60px;
+  background-color: var(--color-primary);
+  border-radius: 10px 0;
+
+  @include small-break {
+    padding: 16px;
+  }
+
+  @include extra-small-break {
+    padding: 8px;
+    flex-wrap: wrap;
+  }
+
+  p {
+    font-size: 24px;
+    color: var(--color-dark-500);
+
+    @include small-break {
+      font-size: 20px;
+    }
+  }
+}
+
+.payment {
+  margin-bottom: 40px;
 }
 
 .loading,

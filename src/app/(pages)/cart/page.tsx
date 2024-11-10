@@ -14,6 +14,7 @@ import { generateMeta } from '../../_utilities/generateMeta'
 import { CartPage } from './CartPage'
 
 import classes from './index.module.scss'
+import ContinueBlock from './ContinueBlock'
 
 // Force this page to be dynamic so that Next.js does not cache it
 // See the note in '../[slug]/page.tsx' about this
@@ -59,10 +60,9 @@ export default async function Cart() {
   return (
     <div className={classes.container}>
       <Gutter>
-        <h3>Your Cart</h3>
         <CartPage settings={settings} page={page} />
+        <ContinueBlock />
       </Gutter>
-      <Blocks blocks={page?.layout} disableTopPadding={true} />
     </div>
   )
 }

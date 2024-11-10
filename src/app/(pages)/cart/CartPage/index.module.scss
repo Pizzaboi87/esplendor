@@ -1,5 +1,9 @@
 @import '../../../_css/common';
 
+.mainTitle {
+  margin-bottom: 30px;
+}
+
 .cart {
   margin: 30px 0;
 }
@@ -11,6 +15,7 @@
 
   @include large-break {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 }
 

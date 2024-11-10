@@ -25,12 +25,12 @@ export const profileNavItems = [
     {
         title: 'Personal Information',
         url: '/account',
-        icon: '/assets/icons/user.svg',
+        icon: '/assets/icons/settings.svg',
     },
     {
         title: 'My Purchases',
         url: '/account/purchases',
-        icon: '/assets/icons/purchases.svg',
+        icon: '/assets/icons/purchase.svg',
     },
     {
         title: 'My Orders',

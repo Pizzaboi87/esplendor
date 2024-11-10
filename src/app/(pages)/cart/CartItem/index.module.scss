@@ -2,7 +2,7 @@
 
 .item {
   display: grid;
-  grid-template-columns: 100px 2fr 1fr;
+  grid-template-columns: 140px 2fr 40px 1fr;
   padding: 24px 0;
   gap: 24px;
   border-bottom: 1px solid var(--color-dark-50);
@@ -43,6 +43,7 @@
 
   @include small-break {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
@@ -51,7 +52,7 @@
   overflow: hidden;
   
   h6 {
-    line-height: 20px;
+    line-height: 25px;
     margin-bottom: 8px;
   }
 }
@@ -64,7 +65,7 @@
   align-items: center;
   height: 45px;
   width: 100%;
-  max-width: 120px;
+  max-width: 130px;
   padding: 0 5px;
   box-sizing: border-box;
 }
@@ -81,20 +82,36 @@
 .quantityInput {
   text-align: center;
   height: 100%;
+  min-width: 37px;
   border: none;
   outline: none;
   font-size: 16px;
   font-weight: 700;
   background-color: transparent;
   width: 100%;
-  margin-left: 7px;
+  margin-left: 5px;
+}
+
+.deleteWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+
+  @include small-break {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 10px;
+  }
 }
 
 .subtotalWrapper {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 60px;
+  gap: 30px;
+  padding-top: 14px;
 
   @include small-break {
     flex-direction: column;

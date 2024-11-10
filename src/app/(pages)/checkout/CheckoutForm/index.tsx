@@ -100,12 +100,18 @@ export const CheckoutForm: React.FC<{}> = () => {
       {error && <Message error={error} />}
       <PaymentElement />
       <div className={classes.actions}>
-        <Button label="Back to cart" href="/cart" appearance="secondary" />
+        <Button
+          label="Back to cart"
+          href="/cart"
+          appearance="secondary"
+          className={classes.button}
+        />
         <Button
           label={isLoading ? 'Loading...' : 'Checkout'}
           type="submit"
           appearance="primary"
           disabled={!stripe || isLoading}
+          className={classes.button}
         />
       </div>
     </form>

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import React, { Fragment, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
@@ -21,7 +22,7 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
   }, [clearCart])
 
   return (
-    <div>
+    <Fragment>
       {error ? (
         <Fragment>
           <Message error={error} />
@@ -29,30 +30,55 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
             {`Your payment was successful but there was an error processing your order. Please contact us to resolve this issue.`}
           </p>
           <div className={classes.actions}>
-            <Button href="/account" label="View account" appearance="primary" />
+            <Button
+              href="/account"
+              label="View account"
+              appearance="primary"
+              className={classes.button}
+            />
             <Button
               href={`${process.env.NEXT_PUBLIC_SERVER_URL}/orders`}
               label="View all orders"
               appearance="secondary"
+              className={classes.button}
             />
           </div>
         </Fragment>
       ) : (
-        <Fragment>
-          <h1>Thank you for your order!</h1>
-          <p>
-            {`Your order has been confirmed. You will receive an email confirmation shortly. Your order ID is ${orderID}.`}
-          </p>
-          <div className={classes.actions}>
-            <Button href={`/orders/${orderID}`} label="View order" appearance="primary" />
-            <Button
-              href={`${process.env.NEXT_PUBLIC_SERVER_URL}/orders`}
-              label="View all orders"
-              appearance="secondary"
+        <div className={classes.container}>
+          <div className={classes.content}>
+            <h3>Thank you for your order!</h3>
+            <p>
+              Your order has been confirmed. You will receive an email confirmation shortly.
+              <br />
+              {`Your order ID is ${orderID}.`}
+            </p>
+            <div className={classes.actions}>
+              <Button
+                href={`/account/orders/${orderID}`}
+                label="View order"
+                appearance="primary"
+                className={classes.button}
+              />
+              <Button
+                href={`${process.env.NEXT_PUBLIC_SERVER_URL}/account/orders`}
+                label="View all orders"
+                appearance="secondary"
+                className={classes.button}
+              />
+            </div>
+          </div>
+          <div className={classes.imageWrapper}>
+            <Image
+              src="/assets/images/ring-box.webp"
+              alt="Ring box"
+              width={300}
+              height={300}
+              className={classes.image}
             />
           </div>
-        </Fragment>
+        </div>
       )}
-    </div>
+    </Fragment>
   )
 }

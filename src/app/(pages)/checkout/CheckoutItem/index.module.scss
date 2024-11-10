@@ -1,0 +1,84 @@
+// index.module.scss
+@import '../../../_css/common';
+
+.item {
+  display: grid;
+  grid-template-columns: 100px 5fr 100px;
+  padding: 16px 0;
+  gap: 16px;
+  border-bottom: 1px solid var(--color-dark-50);
+}
+
+.mediaWrapper {
+  position: relative;
+  min-height: 80px;
+  max-height: 100px;
+  border: 1px solid var(--color-terciary);
+  border-radius: 10px 0;
+  aspect-ratio: 1 / 1;
+
+    @include custom-break {
+        min-height: 200px;
+    }
+}
+
+.media {
+  position: relative;
+  height: 100%;
+  border-radius: 10px 0;
+}
+
+.image {
+  object-fit: cover;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px 0;
+}
+
+.itemDetails {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.titleWrapper {
+  white-space: wrap;
+
+  p {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+}
+
+.quantity {
+  text-align: center;
+  font-size: 18px;
+  
+  @include small-break {
+    display: none;
+  }
+}
+
+.subtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quantity,
+  .subtotal {
+    width: 100%;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: start;
+  }
+}

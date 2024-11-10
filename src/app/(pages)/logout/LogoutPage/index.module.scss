@@ -1,8 +1,8 @@
-@import '../../../_css/common';
+@import '../../../_css/queries.scss';
 
 .container {
   width: 100%;
-  margin: 0 auto 0;
+  margin: 50px auto 0;
   display: grid;
   grid-template-columns: 1fr 400px;
   border-radius: 20px 0;
@@ -12,7 +12,7 @@
 
   @include small-break {
     grid-template-columns: 1fr;
-    margin: 0 auto 0;
+    margin: 30px auto 0;
   }
 }
 
@@ -31,7 +31,7 @@
 
   @include small-break {
     max-height: 300px;
-    object-position: bottom;
+    object-position: center;
   }
 }
 
@@ -44,14 +44,11 @@
   text-align: center;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 30px;
-  gap: calc(var(--base) / 2);
-}
+.link {
+    transition: 0.3s all ease-in-out;
 
-.button {
-  border-radius: 5px;
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 7px;
+    }
 }
