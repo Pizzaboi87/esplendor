@@ -6,24 +6,24 @@ type CartType = User['cart']
 
 type CartAction =
   | {
-    type: 'SET_CART'
-    payload: CartType
-  }
+      type: 'SET_CART'
+      payload: CartType
+    }
   | {
-    type: 'MERGE_CART'
-    payload: CartType
-  }
+      type: 'MERGE_CART'
+      payload: CartType
+    }
   | {
-    type: 'ADD_ITEM'
-    payload: CartItem
-  }
+      type: 'ADD_ITEM'
+      payload: CartItem
+    }
   | {
-    type: 'DELETE_ITEM'
-    payload: Product
-  }
+      type: 'DELETE_ITEM'
+      payload: Product
+    }
   | {
-    type: 'CLEAR_CART'
-  }
+      type: 'CLEAR_CART'
+    }
 
 export const cartReducer = (cart: CartType, action: CartAction): CartType => {
   switch (action.type) {
