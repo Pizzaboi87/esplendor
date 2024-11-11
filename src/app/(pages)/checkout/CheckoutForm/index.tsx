@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useCallback } from 'react'
-import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { PaymentElement, AddressElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { useRouter } from 'next/navigation'
 
 import { Order } from '../../../../payload/payload-types'
@@ -40,10 +40,6 @@ export const CheckoutForm: React.FC<{}> = () => {
         }
 
         if (paymentIntent) {
-          // Before redirecting to the order confirmation page, we need to create the order in Payload
-          // Cannot clear the cart yet because if you clear the cart while in the checkout
-          // you will be redirected to the `/cart` page before this redirect happens
-          // Instead, we clear the cart in an `afterChange` hook on the `orders` collection in Payload
           try {
             const orderReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders`, {
               method: 'POST',
@@ -80,9 +76,7 @@ export const CheckoutForm: React.FC<{}> = () => {
 
             router.push(`/order-confirmation?order_id=${doc.id}`)
           } catch (err) {
-            // don't throw an error if the order was not created successfully
-            // this is because payment _did_ in fact go through, and we don't want the user to pay twice
-            console.error(err.message) // eslint-disable-line no-console
+            console.error(err.message)
             router.push(`/order-confirmation?error=${encodeURIComponent(err.message)}`)
           }
         }
@@ -99,6 +93,22 @@ export const CheckoutForm: React.FC<{}> = () => {
     <form onSubmit={handleSubmit} className={classes.form}>
       {error && <Message error={error} />}
       <PaymentElement />
+      <AddressElement
+        options={{
+          mode: 'shipping',
+          defaultValues: {
+            name: '',
+            address: {
+              line1: '',
+              line2: '',
+              city: '',
+              state: '',
+              postal_code: '',
+              country: '',
+            },
+          },
+        }}
+      />
       <div className={classes.actions}>
         <Button
           label="Back to cart"

@@ -1,6 +1,6 @@
 {
-  "name": "@payloadcms/template-ecommerce",
-  "description": "E-commerce template for Payload",
+  "name": "@payloadcms/esplendor",
+  "description": "Esplendor rings webshop",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",

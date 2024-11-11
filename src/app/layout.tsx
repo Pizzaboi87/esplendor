@@ -33,7 +33,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <InitTheme />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
@@ -52,10 +51,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
-  },
-  openGraph: mergeOpenGraph(),
+  title: "Esplend'or Rings",
+  description: "Wedding and engagement rings by Esplend'or Rings",
 }
