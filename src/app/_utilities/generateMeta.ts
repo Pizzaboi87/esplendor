@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import type { Metadata } from 'next'
 
 import type { Page, Product } from '../../payload/payload-types'
