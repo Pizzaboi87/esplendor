@@ -13,7 +13,7 @@ export const generateMeta = async (args: { doc: Page | Product }): Promise<Metad
     `${process.env.NEXT_PUBLIC_SERVER_URL}${doc.meta.image.url}`
 
   return {
-    title: doc?.meta?.title || 'Esplend\'or Rings',
+    title: doc?.meta?.title || 'Esplendor Rings',
     description: doc?.meta?.description,
     openGraph: mergeOpenGraph({
       title: doc?.meta?.title || 'Payload',

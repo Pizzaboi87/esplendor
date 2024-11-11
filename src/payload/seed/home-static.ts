@@ -7,8 +7,8 @@ export const staticHome: Page = {
   createdAt: '',
   updatedAt: '',
   meta: {
-    title: 'Esplend\'or Rings',
-    description: 'Wedding and engagement rings by Esplend\'or Rings',
+    title: 'Esplendor Rings',
+    description: 'Wedding and engagement rings by Esplendor Rings',
   },
   hero: {
     type: 'lowImpact',
@@ -16,7 +16,7 @@ export const staticHome: Page = {
       {
         children: [
           {
-            text: 'Esplend\'or Rings',
+            text: 'Esplendor Rings',
           },
         ],
         type: 'h1',

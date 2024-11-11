@@ -5,8 +5,8 @@ export const home: Partial<Page> = {
   slug: 'home',
   _status: 'published',
   meta: {
-    title: 'Esplend\'or Rings',
-    description: 'Wedding and engagement rings by Esplend\'or Rings',
+    title: 'Esplendor Rings',
+    description: 'Wedding and engagement rings by Esplendor Rings',
     image: '{{PRODUCT1_IMAGE}}',
   },
   hero: {
@@ -15,7 +15,7 @@ export const home: Partial<Page> = {
       {
         children: [
           {
-            text: 'Esplend\'or Rings',
+            text: 'Esplendor Rings',
           },
         ],
         type: 'h1',

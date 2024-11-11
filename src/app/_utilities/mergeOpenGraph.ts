@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  siteName: 'Esplend\'or Rings',
-  title: 'Esplend\'or Rings',
-  description: 'Wedding and engagement rings by Esplend\'or Rings',
+  siteName: 'Esplendor Rings',
+  title: 'Esplendor Rings',
+  description: 'Wedding and engagement rings by Esplendor Rings',
   images: [
     {
       url: 'https://payloadcms.com/images/og-image.jpg',
